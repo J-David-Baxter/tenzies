@@ -31,6 +31,7 @@ function App() {
 
   function resetGame() {
     setDice(initalState)
+    setWonGame(false)
   }
 
   useEffect(() => {
