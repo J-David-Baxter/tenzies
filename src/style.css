@@ -5,14 +5,17 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: #0B2434;
+    background-color: white
 }
 
 .App {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 85vh;
+    width: 80vw;
+    margin: 0 auto;
+    background-color: #0B2434;
 }
 
 main {
@@ -21,4 +24,5 @@ main {
     width: 75vw;
     max-width: 75vw;
     border-radius: 5px;
+    
 }
