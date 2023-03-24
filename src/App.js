@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dice from "./Dice";
-import "./style.css"
+import "./style.css";
 
 function assignValue(die) {
   let randomNumber = Math.floor(Math.random() * 6 + 1);
@@ -17,31 +17,31 @@ function App() {
 
   function freezeDie(index) {
     setDice(dice.map((die, i) => {
-      return i === index ? {...die, frozen: !die.frozen} : die
+      return i === index ? {...die, frozen: !die.frozen} : die;
     }))
   }
 
   function handleRoll() {
     setDice(prevDice => {
       return prevDice.map(die => {
-        return !die.frozen ? assignValue({...die}) : die
+        return !die.frozen ? assignValue({...die}) : die;
       })
     })
   }
 
   function resetGame() {
-    setDice(initalState)
-    setWonGame(false)
+    setDice(initalState);
+    setWonGame(false);
   }
 
   useEffect(() => {
     let diceValues = dice.map(die => die.value);
-    diceValues.every(value => value === diceValues[0]) && setWonGame(true)
+    diceValues.every(value => value === diceValues[0]) && setWonGame(true);
   }, [dice])
 
   useEffect(() => {
     if (wonGame) {
-      setDice(dice.map(die => ({...die, frozen: true, locked: true})))
+      setDice(prevDice => prevDice.map(die => ({...die, frozen: true, locked: true})))
     }
   }, [wonGame])
   
