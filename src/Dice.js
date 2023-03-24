@@ -8,7 +8,7 @@ const Dice = ({index, value, frozen, locked, freezeDie}) => {
   
   return (
     <div style={styles} className='die' onClick={() => freezeDie(index)}>
-        <h4 className='die-value'>1</h4>
+        <h4 className='die-value'>{value}</h4>
     </div>
   )
 }
