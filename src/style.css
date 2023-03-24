@@ -26,3 +26,18 @@ main {
     border-radius: 5px;
     
 }
+
+.title {
+    font-size: 40px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.text {
+    width: 230px;
+    size: 13px;
+    margin: 0 auto;
+    text-align: center;
+    color: #4A4E74;
+}
