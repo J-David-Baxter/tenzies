@@ -14,6 +14,12 @@ const initalState = initialArray.map((die, i) => i < 10 && assignValue({...die})
 function App() {
   const [dice, setDice] = useState(initalState);
   const [wonGame, setWonGame] = useState(false);
+
+  function freezeDie(index) {
+    setDice(dice.map((die, i) => {
+      return i === index ? {...die, frozen: !die.frozen} : die
+    }))
+  }
   
   return (
     <div className="App">
@@ -26,6 +32,7 @@ function App() {
               key={i}
               index={i}
               {...die}
+              freezeDie={freezeDie}
             />
           ))}
         </div>
