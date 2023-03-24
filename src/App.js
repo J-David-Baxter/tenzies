@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dice from "./Dice";
 import "./style.css"
 
@@ -28,6 +28,21 @@ function App() {
       })
     })
   }
+
+  function resetGame() {
+    setDice(initalState)
+  }
+
+  useEffect(() => {
+    let diceValues = dice.map(die => die.value);
+    diceValues.every(value => value === diceValues[0]) && setWonGame(true)
+  }, [dice])
+
+  useEffect(() => {
+    if (wonGame) {
+      setDice(dice.map(die => ({...die, frozen: true, locked: true})))
+    }
+  }, [wonGame])
   
   return (
     <div className="App">
@@ -44,7 +59,7 @@ function App() {
             />
           ))}
         </div>
-        <button className="btn" onClick={handleRoll}>Roll</button>
+        {wonGame ? <button className="btn" onClick={resetGame}>Reset</button> : <button className="btn" onClick={handleRoll}>Roll</button>}
       </main>
     </div>
     
