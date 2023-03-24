@@ -20,6 +20,14 @@ function App() {
       return i === index ? {...die, frozen: !die.frozen} : die
     }))
   }
+
+  function handleRoll() {
+    setDice(prevDice => {
+      return prevDice.map(die => {
+        return !die.frozen ? assignValue({...die}) : die
+      })
+    })
+  }
   
   return (
     <div className="App">
@@ -36,7 +44,7 @@ function App() {
             />
           ))}
         </div>
-        <button className="btn">Roll</button>
+        <button className="btn" onClick={handleRoll}>Roll</button>
       </main>
     </div>
     
