@@ -36,6 +36,7 @@ function App() {
             />
           ))}
         </div>
+        <button className="btn">Roll</button>
       </main>
     </div>
     
