@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Dice from "./Dice";
 import "./style.css"
 
 function assignValue(die) {
@@ -20,7 +21,13 @@ function App() {
         <h1 className="title">Tenzies</h1>
         <p className="text">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
         <div className="dice-container">
-          
+          {dice.map((die, i) => (
+            <Dice 
+              key={i}
+              index={i}
+              {...die}
+            />
+          ))}
         </div>
       </main>
     </div>

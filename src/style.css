@@ -41,3 +41,26 @@ main {
     text-align: center;
     color: #4A4E74;
 }
+
+.dice-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 500px;
+    margin: 30px auto;
+}
+
+.die {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.die-value {
+    font-size: 20px;
+    pointer-events: none;
+}
