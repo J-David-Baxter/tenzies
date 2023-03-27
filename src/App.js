@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dice from "./Dice";
+import Confetti from "react-confetti";
 import "./style.css";
 
 function assignValue(die) {
@@ -14,6 +15,7 @@ const initalState = initialArray.map(die => assignValue({...die}));
 const App = () => {
   const [dice, setDice] = useState(initalState);
   const [wonGame, setWonGame] = useState(false);
+  const [numRolls, setNumRolls] = useState(0);
 
   function freezeDie(index) {
     setDice(dice.map((die, i) => {
@@ -22,6 +24,7 @@ const App = () => {
   }
 
   function handleRoll() {
+    setNumRolls(prevNumRolls => prevNumRolls + 1)
     setDice(prevDice => {
       return prevDice.map(die => {
         return !die.frozen ? assignValue({...die}) : die;
@@ -32,6 +35,7 @@ const App = () => {
   function resetGame() {
     setDice(initalState);
     setWonGame(false);
+    setNumRolls(0);
   }
 
   useEffect(() => {
@@ -42,6 +46,7 @@ const App = () => {
   
   return (
     <main>
+      {wonGame && <Confetti />}
       <h1 className="title">Tenzies</h1>
       <p className="text">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className="dice-container">
@@ -53,6 +58,7 @@ const App = () => {
           />
           ))}
       </div>
+      <p className="text">Number of Rolls: {numRolls}</p>
       {wonGame ? <button className="btn" onClick={resetGame}>Reset</button> : <button className="btn" onClick={handleRoll}>Roll</button>}
     </main>
   );
