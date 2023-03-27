@@ -35,15 +35,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    let diceValues = dice.map(die => die.value);
-    diceValues.every(value => value === diceValues[0]) && setWonGame(true);
+    dice.every(die => die.frozen === true) &&
+    dice.every(die => die.value === dice[0].value) && 
+    setWonGame(true);
   }, [dice])
-
-  useEffect(() => {
-    if (wonGame) {
-      setDice(prevDice => prevDice.map(die => ({...die, frozen: true, locked: true})))
-    }
-  }, [wonGame])
   
   return (
     <main>
